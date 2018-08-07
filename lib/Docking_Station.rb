@@ -10,8 +10,7 @@ class DockingStation
     end
     
     def dock(bike)
-        @bikes << bike
-        return @bikes
+        @bikes.length > 9 ? raise("Dock Full") : @bikes << bike
     end
 
 end

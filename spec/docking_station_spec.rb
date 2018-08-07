@@ -23,4 +23,10 @@ describe DockingStation do
   it "will not release bike if none are present" do
     expect{subject.release_bike}.to raise_error("No bikes in Station")
   end
+
+  it "will not accept bike if dock is full" do
+    docking_station = subject
+    10.times { docking_station.dock(Bike.new) }
+    expect{docking_station.dock(Bike.new)}.to raise_error("Dock Full")
+  end
 end
