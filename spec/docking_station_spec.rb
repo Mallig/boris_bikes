@@ -3,14 +3,16 @@ require 'Bike'
 
 describe DockingStation do
 
+  let(:mockWorkingBike) {double :bike, working?: true}
+  let(:mockBrokenBike)  {double :bike, working?: false}
+  
   it "Releases a bike" do
-    subject.dock(Bike.new)
-    expect(subject.release_bike).to be_a(Bike)
+    subject.dock(mockWorkingBike)
+    expect(subject.release_bike).to be_working
   end
 
   it "should dock a bike when #dock is called" do
-    bike = Bike.new
-    expect(subject.dock(bike)).to include(bike)
+    expect(subject.dock(mockWorkingBike)).to include(mockWorkingBike)
   end
 
   it "will not release bike if none are present" do
@@ -18,8 +20,14 @@ describe DockingStation do
   end
 
   it "will not accept bike if dock is full" do
-    20.times { subject.dock(Bike.new) }
-    expect{ subject.dock(Bike.new) }.to raise_error "Dock Full"
+    DockingStation::DEFAULT_CAPACITY.times { subject.dock(mockWorkingBike) }
+    expect{ subject.dock(mockWorkingBike) }.to raise_error "Dock Full"
   end
-
+  
+  it "can accept a capacity argument" do
+    limit = rand(200)
+    subject = DockingStation.new(limit)
+    limit.times { subject.dock(mockWorkingBike) }
+    expect{ subject.dock(mockWorkingBike) }.to raise_error "Dock Full"
+  end
 end
