@@ -1,5 +1,7 @@
-require './lib/Docking_Station.rb'
+require 'Bike'
 
 describe Bike do
-  it {is_expected.to respond_to :working?}
+  it 'is expected to work' do
+    expect(Bike.new).to be_working
+  end
 end

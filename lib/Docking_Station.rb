@@ -8,22 +8,22 @@ class DockingStation
     @bikes = []
   end
 
-  # *** Make station_full? and station_empty? private ***
+  #is this still a guard clause?
+  def release_bike
+    station_empty? ? raise("No bikes in Station") : bikes.pop
+  end
+  
+  def dock(bike)
+    station_full? ? raise("Dock Full") : bikes << bike
+  end
+  
+  private
   def station_full?
-    @bikes.length == @capacity
+    bikes.length >= capacity
   end
 
   def station_empty?
-    @bikes.empty?
-  end
-
-  def release_bike
-    station_empty? ? raise("No bikes in Station") : @bikes.pop
-  end
-
-    
-  def dock(bike)
-    station_full? ? raise("Dock Full") : @bikes << bike
+    bikes.empty?
   end
 
 end
