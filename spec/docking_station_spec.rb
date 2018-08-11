@@ -1,5 +1,4 @@
 require 'Docking_Station'
-require 'Bike'
 
 describe DockingStation do
 
@@ -30,4 +29,5 @@ describe DockingStation do
     limit.times { subject.dock(mockWorkingBike) }
     expect{ subject.dock(mockWorkingBike) }.to raise_error "Dock Full"
   end
+
 end
