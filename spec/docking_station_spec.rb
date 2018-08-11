@@ -5,22 +5,32 @@ describe DockingStation do
   let(:mockWorkingBike) {double :bike, working?: true}
   let(:mockBrokenBike)  {double :bike, working?: false}
   
-  it "Releases a bike" do
-    subject.dock(mockWorkingBike)
-    expect(subject.release_bike).to be_working
+  describe "#release_bike" do
+
+    it "releases a bike" do
+      subject.dock(mockWorkingBike)
+      expect(subject.release_bike).to eq(mockWorkingBike)
+    end
+
+    it "will not release bike if none working are present" do
+      subject.dock(mockBrokenBike)
+      expect{subject.release_bike}.to raise_error "No working bikes in Station"
+    end
+
   end
 
-  it "should dock a bike when #dock is called" do
-    expect(subject.dock(mockWorkingBike)).to include(mockWorkingBike)
-  end
+  describe "#dock()" do
 
-  it "will not release bike if none are present" do
-    expect{subject.release_bike}.to raise_error "No bikes in Station"
-  end
+    it "should dock a bike" do
+      expect(subject.dock(mockWorkingBike)).to include(mockWorkingBike)
+    end
+  
 
-  it "will not accept bike if dock is full" do
-    DockingStation::DEFAULT_CAPACITY.times { subject.dock(mockWorkingBike) }
-    expect{ subject.dock(mockWorkingBike) }.to raise_error "Dock Full"
+    it "will not accept bike if dock is full" do
+      DockingStation::DEFAULT_CAPACITY.times { subject.dock(mockWorkingBike) }
+      expect{ subject.dock(mockWorkingBike) }.to raise_error "Dock Full"
+    end
+
   end
   
   it "can accept a capacity argument" do
@@ -29,5 +39,6 @@ describe DockingStation do
     limit.times { subject.dock(mockWorkingBike) }
     expect{ subject.dock(mockWorkingBike) }.to raise_error "Dock Full"
   end
+
 
 end
