@@ -1,5 +1,5 @@
+# Bike class, simple stuff
 class Bike
-
   def initialize
     @status = true
   end
@@ -10,7 +10,6 @@ class Bike
 
   def report
     @status = false
-    "Bike reported as Broken"
+    'Bike reported as Broken'
   end
-
 end

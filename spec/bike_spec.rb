@@ -1,14 +1,12 @@
 require 'Bike'
 
 describe Bike do
-
   it 'is expected to work on creation' do
     expect(subject).to be_working
   end
 
-  it "is can be reported as broken" do
-    expect(subject.report).to eq("Bike reported as Broken")
+  it 'is can be reported as broken' do
+    expect(subject.report).to eq('Bike reported as Broken')
     expect(subject.working?).to eq(false)
   end
-
 end

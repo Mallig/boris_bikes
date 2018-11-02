@@ -1,0 +1,11 @@
+AllCops:
+  Exclude:
+    - '.rspec'
+    - 'Gemfile'
+    - 'Gemfile.lock'
+    - 'Gemfile.lock'
+    - 'spec/spec_helper.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/*.rb'

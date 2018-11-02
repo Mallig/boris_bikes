@@ -11,7 +11,7 @@ Writing this has been my first experience creating a program through test driven
 
 ## Program Structure
 
-There are two classes in this program, Bike and DockingStation. Bikes may be stored/released from Docking Stations and be reported as broken. Users interact with the program through ruby REPL
+There are two classes in this program, Bike and DockingStation. Bikes may be stored/released from Docking Stations and be reported as broken. Users interact with the program through ruby REPL.
 
 ## Installing Boris Bikes
 
