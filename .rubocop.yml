@@ -7,5 +7,4 @@ AllCops:
     - 'spec/spec_helper.rb'
 
 Metrics/BlockLength:
-  Exclude:
-    - 'spec/*.rb'
+  ExcludedMethods: ['describe']

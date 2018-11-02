@@ -1,4 +1,4 @@
-# Docking Station for holding and releasing bikes members of the public
+# Docking Station for holding and releasing bikes to members of the public
 class DockingStation
   attr_reader :working_bikes, :capacity
   DEFAULT_CAPACITY = 20
